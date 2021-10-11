@@ -6,13 +6,17 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Loader\PhpFileLoader;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
 
 require __DIR__.'/vendor/autoload.php';
 
+//PHP lOADER =========================
+//$loader = new PhpFileLoader(new FileLocator(__DIR__.'/config'));
+//$collection = $loader->load('routes.php');
 
-$loader = new PhpFileLoader(new FileLocator(__DIR__.'/config'));
-
-$collection = $loader->load('routes.php');
+//YAML LOADER
+$loader = new YamlFileLoader(new FileLocator(__DIR__.'/config'));
+$collection = $loader->load('routes.yaml');
 
 
 $matcher = new UrlMatcher($collection,new RequestContext('',$_SERVER['REQUEST_METHOD']));
