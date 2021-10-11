@@ -29,7 +29,7 @@ try{
     
     $currentRoute = $matcher->match($pathInfo);
 
-    $controller = $currentRoute['controller'];
+    $controller = $currentRoute['_controller'];
     $currentRoute['generator'] = $generator;
 
     $className = substr($controller,0,strpos($controller,'@'));
